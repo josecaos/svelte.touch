@@ -1,0 +1,84 @@
+:root {
+  --color-obj: #0169B1;
+  --color-obj-dropped: #8BBE42;
+  --color-area: #86378B;
+  --color-area-active: #D63A87;
+  /* --color-: #F7D648; */
+}
+* {
+  outline: 1px solid black;
+}
+/*  */
+body {
+  /* display: flex; */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+.dragall {
+  position: fixed;
+}
+:root {
+  --color-obj: #0169B1;
+  --color-obj-dropped: #8BBE42;
+  --color-area: #86378B;
+  --color-area-active: #D63A87;
+  /* --color-: #F7D648; */
+}
+* {
+  outline: 1px solid black;
+}
+/*  */
+body {
+  /* display: flex; */
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+.contenido {
+  height: 100%;
+  width: 100%;
+}
+.dropall {
+  position: fixed;
+  height: 150px;
+  width: 150px;
+}
+.dragall {
+  position: fixed;
+  height: 150px;
+  width: 150px;
+  z-index: 100;
+}
+#zonas_linguisticas {
+  height: 100vh;
+  width: 100vw;
+}
+#zonas_linguisticas svg path {
+  height: 150px;
+  width: 150px;
+}
+.drop-1 {
+  top: 64px;
+  left: 64px;
+}
+.drop-2 {
+  top: 64px;
+  right: 64px;
+}
+.drop-3 {
+  bottom: 64px;
+  left: 64px;
+}
+.drop-4 {
+  bottom: 64px;
+  right: 64px;
+}
+/*  */
+.info {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}

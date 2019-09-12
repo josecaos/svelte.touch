@@ -1,5 +1,6 @@
 <script>
-	// import { DragDrop } from './componentes/DragDrop'
+	import DragDrop from './componentes/DragDrop.svelte'
+	import './main.css'
 	export let name;
 </script>
 <!--  -->
@@ -9,8 +10,8 @@
 	} */
 </style>
 <!--  -->
-<!-- <h1>Drag n' {name}!</h1> -->
+<h1>{name}!</h1>
 
 <section>
-	<!-- <DragDrop /> -->
+	<DragDrop />
 </section>

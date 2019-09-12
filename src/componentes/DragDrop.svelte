@@ -1,13 +1,50 @@
 <script>
   import interact from 'interactjs'
   import './DragDrop.css'
+  //
+  console.log("Start Scripts: ")
+  const Drag = () => {
+    interact('.dragall').draggable({
+      inertia: true,
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: 'body',
+          endOnly: true
+        })
+      ],
+      // autoScroll: true,
+      onmove: dragMoveListener,
+      onend: (e) => {
+        console.log('drag')
+      }
+
+    })
+  }
+const dragMoveListener = (event) => {
+
+    let target = event.target//svg
+
+    // aplica los valores en los atributos data-
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+    // translate the element
+    target.style.webkitTransform =
+    target.style.transform =
+    'translate(' + x + 'px, ' + y + 'px)'
+
+    // update the position attributes
+    target.setAttribute('data-x', x)
+    target.setAttribute('data-y', y)
+  }
+  //
+  Drag()
 </script>
 <!--  -->
 <section>
   <h2 class="info"></h2>
+  <!--
   <div class="contenedores">
 
-    <!-- circulo -->
     <svg id="svg-circulo-area" class="drop-1 dropall" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
     preserveAspectRatio="xMidYMid meet"
     viewBox="178.6385542168675 77.43373493975895 357.0120481927711 357.01204819277126" width="353.01" height="353.01">
@@ -23,7 +60,6 @@
     </g>
   </svg>
 
-  <!-- cuadrado -->
   <svg id="svg-cuadrado-area" class="drop-2 dropall" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
   preserveAspectRatio="xMidYMid meet"
   viewBox="111.1686746987952 78.63855421686739 387.13253012048193 383.51807228915663" >
@@ -40,7 +76,6 @@
     </g>
   </g>
 </svg>
-<!-- ireglular -->
 <svg id="svg-irregular-area" class="drop-3 dropall" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 preserveAspectRatio="xMidYMid meet"
 viewBox="206.34939759036146 65.38554216867462 270.26506024096386 293.15662650602405" width="266.27" height="289.16">
@@ -58,7 +93,6 @@ viewBox="206.34939759036146 65.38554216867462 270.26506024096386 293.15662650602
 </g>
 </svg>
 
-<!-- triangulo -->
 
 <svg id="svg-triangulo-area" class="drop-4 dropall" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 preserveAspectRatio="xMidYMid meet"
@@ -77,7 +111,7 @@ viewBox="179.84337349397592 85.86746987951798 249.78313253012053 294.36144578313
 </svg>
 
 </div>
-<!--
+
 -->
 <!--  -->
 <!-- draggables -->
