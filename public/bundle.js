@@ -52,9 +52,6 @@ var app = (function () {
         else
             node.setAttribute(attribute, value);
     }
-    function xlink_attr(node, attribute, value) {
-        node.setAttributeNS('http://www.w3.org/1999/xlink', attribute, value);
-    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -313,13 +310,6 @@ var app = (function () {
             dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
         else
             dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
-    }
-    function set_data_dev(text, data) {
-        data = '' + data;
-        if (text.data === data)
-            return;
-        dispatch_dev("SvelteDOMSetData", { node: text, data });
-        text.data = data;
     }
     class SvelteComponentDev extends SvelteComponent {
         constructor(options) {
@@ -10055,161 +10045,121 @@ var app = (function () {
     const file = "src/componentes/DragDrop.svelte";
 
     function create_fragment(ctx) {
-    	var section, h2, t0, div, svg0, defs0, path0, g1, g0, use0, t1, svg1, defs1, path1, g4, g3, use1, g2, use2, t2, svg2, defs2, path2, g7, g6, use3, g5, use4, t3, svg3, defs3, path3, g10, g9, use5, g8, use6;
+    	var section, div0, svg2, path0, path1, svg1, defs1, path2, svg0, defs0, path3, t, div1, svg3, path4, path5, path6, path7;
 
     	const block = {
     		c: function create() {
     			section = element("section");
-    			h2 = element("h2");
-    			t0 = space();
-    			div = element("div");
-    			svg0 = svg_element("svg");
-    			defs0 = svg_element("defs");
+    			div0 = element("div");
+    			svg2 = svg_element("svg");
     			path0 = svg_element("path");
-    			g1 = svg_element("g");
-    			g0 = svg_element("g");
-    			use0 = svg_element("use");
-    			t1 = space();
+    			path1 = svg_element("path");
     			svg1 = svg_element("svg");
     			defs1 = svg_element("defs");
-    			path1 = svg_element("path");
-    			g4 = svg_element("g");
-    			g3 = svg_element("g");
-    			use1 = svg_element("use");
-    			g2 = svg_element("g");
-    			use2 = svg_element("use");
-    			t2 = space();
-    			svg2 = svg_element("svg");
-    			defs2 = svg_element("defs");
     			path2 = svg_element("path");
-    			g7 = svg_element("g");
-    			g6 = svg_element("g");
-    			use3 = svg_element("use");
-    			g5 = svg_element("g");
-    			use4 = svg_element("use");
-    			t3 = space();
-    			svg3 = svg_element("svg");
-    			defs3 = svg_element("defs");
+    			svg0 = svg_element("svg");
+    			defs0 = svg_element("defs");
     			path3 = svg_element("path");
-    			g10 = svg_element("g");
-    			g9 = svg_element("g");
-    			use5 = svg_element("use");
-    			g8 = svg_element("g");
-    			use6 = svg_element("use");
-    			attr_dev(h2, "class", "info");
-    			add_location(h2, file, 43, 2, 1021);
+    			t = space();
+    			div1 = element("div");
+    			svg3 = svg_element("svg");
+    			path4 = svg_element("path");
+    			path5 = svg_element("path");
+    			path6 = svg_element("path");
+    			path7 = svg_element("path");
     			attr_dev(path0, "d", "M532.65 254.94C532.65 352.36 453.56 431.45 356.14 431.45C258.73 431.45 179.64 352.36 179.64 254.94C179.64 157.52 258.73 78.43 356.14 78.43C453.56 78.43 532.65 157.52 532.65 254.94Z");
-    			attr_dev(path0, "id", "circulo-drag");
-    			add_location(path0, file, 123, 4, 4365);
-    			add_location(defs0, file, 122, 2, 4354);
-    			xlink_attr(use0, "xlink:href", "#circulo-drag");
-    			attr_dev(use0, "opacity", "1");
-    			attr_dev(use0, "width", "150");
-    			attr_dev(use0, "height", "150");
-    			attr_dev(use0, "fill-opacity", "1");
-    			add_location(use0, file, 129, 6, 4620);
-    			add_location(g0, file, 128, 4, 4610);
-    			add_location(g1, file, 127, 2, 4602);
-    			attr_dev(svg0, "id", "svg-circulo-drag");
-    			attr_dev(svg0, "class", "dragall");
+    			attr_dev(path0, "id", "circulo-area");
+    			attr_dev(path0, "class", "drop-1 dropall");
+    			attr_dev(path0, "opacity", "1");
+    			attr_dev(path0, "fill", "#651e48");
+    			add_location(path0, file, 117, 0, 3596);
+    			attr_dev(path1, "d", "M112.17 79.64L495.3 79.64L495.3 459.16L112.17 459.16L112.17 79.64Z");
+    			attr_dev(path1, "id", "cuadrado-area");
+    			attr_dev(path1, "class", "drop-2 dropall");
+    			attr_dev(path1, "opacity", "1");
+    			attr_dev(path1, "fill", "#1d5299");
+    			add_location(path1, file, 124, 0, 3864);
+    			attr_dev(path2, "d", "M473.61 66.39L437.47 172.41L433.86 219.4L324.22 239.88L403.73 272.41L349.52 285.66L339.88 342.29L282.05 304.94L274.82 355.54L236.27 300.12L207.35 219.4L232.65 133.86L473.61 66.39Z");
+    			attr_dev(path2, "id", "irregular-area");
+    			attr_dev(path2, "class", "drop-3 dropall");
+    			attr_dev(path2, "opacity", "1");
+    			attr_dev(path2, "fill", "#b06508");
+    			add_location(path2, file, 135, 0, 4301);
+    			attr_dev(path3, "width", "200");
+    			attr_dev(path3, "height", "200");
+    			attr_dev(path3, "d", "M426.63 374.82L180.84 377.23L300.12 86.87L426.63 374.82Z");
+    			attr_dev(path3, "id", "triangulo-area");
+    			attr_dev(path3, "class", "drop-4 dropall");
+    			attr_dev(path3, "opacity", "1");
+    			attr_dev(path3, "fill", "#469216");
+    			add_location(path3, file, 148, 0, 4854);
+    			add_location(defs0, file, 147, 0, 4847);
+    			attr_dev(svg0, "id", "svg-triangulo-area");
     			attr_dev(svg0, "version", "1.1");
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "xmlns:xlink", "http://www.w3.org/1999/xlink");
     			attr_dev(svg0, "preserveAspectRatio", "xMidYMid meet");
-    			attr_dev(svg0, "viewBox", "178.6385542168675 77.43373493975895 357.0120481927711 357.01204819277126");
-    			attr_dev(svg0, "width", "353.01");
-    			attr_dev(svg0, "height", "353.01");
-    			add_location(svg0, file, 119, 2, 4062);
-    			attr_dev(path1, "d", "M112.17 79.64L495.3 79.64L495.3 459.16L112.17 459.16L112.17 79.64Z");
-    			attr_dev(path1, "id", "cuadrado-drag");
-    			add_location(path1, file, 139, 2, 5052);
-    			add_location(defs1, file, 138, 0, 5043);
-    			xlink_attr(use1, "xlink:href", "#cuadrado-drag");
-    			attr_dev(use1, "opacity", "1");
-    			attr_dev(use1, "fill", "#1d5299");
-    			attr_dev(use1, "fill-opacity", "1");
-    			add_location(use1, file, 143, 4, 5178);
-    			xlink_attr(use2, "xlink:href", "#cuadrado-drag");
-    			attr_dev(use2, "opacity", "1");
-    			attr_dev(use2, "fill-opacity", "0");
-    			attr_dev(use2, "stroke", "#6c40d2");
-    			attr_dev(use2, "stroke-width", "0");
-    			attr_dev(use2, "stroke-opacity", "1");
-    			add_location(use2, file, 145, 6, 5276);
-    			add_location(g2, file, 144, 4, 5266);
-    			add_location(g3, file, 142, 2, 5170);
-    			add_location(g4, file, 141, 0, 5164);
-    			attr_dev(svg1, "id", "svg-cuadrado-drag");
-    			attr_dev(svg1, "class", "dragall");
+    			attr_dev(svg0, "viewBox", "179.84337349397592 85.86746987951798 249.78313253012053 294.3614457831326");
+    			attr_dev(svg0, "width", "245.78");
+    			attr_dev(svg0, "height", "290.36");
+    			add_location(svg0, file, 144, 0, 4573);
+    			add_location(defs1, file, 134, 0, 4294);
+    			attr_dev(svg1, "id", "svg-irregular-area");
     			attr_dev(svg1, "version", "1.1");
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "xmlns:xlink", "http://www.w3.org/1999/xlink");
     			attr_dev(svg1, "preserveAspectRatio", "xMidYMid meet");
-    			attr_dev(svg1, "viewBox", "111.1686746987952 78.63855421686739 387.13253012048193 383.51807228915663");
-    			attr_dev(svg1, "width", "383.13");
-    			attr_dev(svg1, "height", "379.52");
-    			add_location(svg1, file, 135, 0, 4755);
-    			attr_dev(path2, "d", "M473.61 66.39L437.47 172.41L433.86 219.4L324.22 239.88L403.73 272.41L349.52 285.66L339.88 342.29L282.05 304.94L274.82 355.54L236.27 300.12L207.35 219.4L232.65 133.86L473.61 66.39Z");
-    			attr_dev(path2, "id", "irregular-drag");
-    			add_location(path2, file, 156, 2, 5750);
-    			add_location(defs2, file, 155, 0, 5741);
-    			xlink_attr(use3, "xlink:href", "#irregular-drag");
-    			attr_dev(use3, "opacity", "1");
-    			attr_dev(use3, "fill", "#b06508");
-    			attr_dev(use3, "fill-opacity", "1");
-    			add_location(use3, file, 160, 4, 5990);
-    			xlink_attr(use4, "xlink:href", "#irregular-drag");
-    			attr_dev(use4, "opacity", "1");
-    			attr_dev(use4, "fill-opacity", "0");
-    			attr_dev(use4, "stroke", "#000000");
-    			attr_dev(use4, "stroke-width", "0");
-    			attr_dev(use4, "stroke-opacity", "1");
-    			add_location(use4, file, 162, 6, 6089);
-    			add_location(g5, file, 161, 4, 6079);
-    			add_location(g6, file, 159, 2, 5982);
-    			add_location(g7, file, 158, 0, 5976);
-    			attr_dev(svg2, "id", "svg-irregular-drag");
-    			attr_dev(svg2, "class", "dragall");
+    			attr_dev(svg1, "viewBox", "206.34939759036146 65.38554216867462 270.26506024096386 293.15662650602405");
+    			attr_dev(svg1, "width", "266.27");
+    			attr_dev(svg1, "height", "289.16");
+    			add_location(svg1, file, 131, 0, 4020);
+    			attr_dev(svg2, "id", "svg-contenedor");
     			attr_dev(svg2, "version", "1.1");
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "xmlns:xlink", "http://www.w3.org/1999/xlink");
     			attr_dev(svg2, "preserveAspectRatio", "xMidYMid meet");
-    			attr_dev(svg2, "viewBox", "206.34939759036146 65.38554216867462 270.26506024096386 293.15662650602405");
-    			attr_dev(svg2, "width", "266.27");
-    			attr_dev(svg2, "height", "289.16");
-    			add_location(svg2, file, 152, 0, 5451);
-    			attr_dev(path3, "d", "M426.63 374.82L180.84 377.23L300.12 86.87L426.63 374.82Z");
-    			attr_dev(path3, "id", "triangulo-drag");
-    			add_location(path3, file, 175, 2, 6565);
-    			add_location(defs3, file, 174, 0, 6556);
-    			xlink_attr(use5, "xlink:href", "#triangulo-drag");
-    			attr_dev(use5, "opacity", "1");
-    			attr_dev(use5, "fill", "#469216");
-    			attr_dev(use5, "fill-opacity", "1");
-    			add_location(use5, file, 179, 4, 6682);
-    			xlink_attr(use6, "xlink:href", "#triangulo-drag");
-    			attr_dev(use6, "opacity", "1");
-    			attr_dev(use6, "fill-opacity", "0");
-    			attr_dev(use6, "stroke", "#000000");
-    			attr_dev(use6, "stroke-width", "0");
-    			attr_dev(use6, "stroke-opacity", "1");
-    			add_location(use6, file, 181, 6, 6781);
-    			add_location(g8, file, 180, 4, 6771);
-    			add_location(g9, file, 178, 2, 6674);
-    			add_location(g10, file, 177, 0, 6668);
-    			attr_dev(svg3, "id", "svg-triangulo-drag");
-    			attr_dev(svg3, "class", "dragall");
+    			attr_dev(svg2, "viewBox", "178.6385542168675 77.43373493975895 357.0120481927711 357.01204819277126");
+    			attr_dev(svg2, "width", "353.01");
+    			attr_dev(svg2, "height", "353.01");
+    			add_location(svg2, file, 113, 0, 3306);
+    			attr_dev(div0, "id", "contenedores");
+    			add_location(div0, file, 112, 0, 3282);
+    			attr_dev(path4, "d", "M532.65 254.94C532.65 352.36 453.56 431.45 356.14 431.45C258.73 431.45 179.64 352.36 179.64 254.94C179.64 157.52 258.73 78.43 356.14 78.43C453.56 78.43 532.65 157.52 532.65 254.94Z");
+    			attr_dev(path4, "id", "circulo-drag");
+    			attr_dev(path4, "class", "dragall");
+    			attr_dev(path4, "opacity", "1");
+    			attr_dev(path4, "fill", "#1c5a35");
+    			add_location(path4, file, 167, 0, 5345);
+    			attr_dev(path5, "d", "M112.17 79.64L495.3 79.64L495.3 459.16L112.17 459.16L112.17 79.64Z");
+    			attr_dev(path5, "id", "cuadrado-drag");
+    			attr_dev(path5, "class", "dragall");
+    			attr_dev(path5, "opacity", "1");
+    			attr_dev(path5, "fill", "#1d5299");
+    			add_location(path5, file, 175, 0, 5625);
+    			attr_dev(path6, "d", "M473.61 66.39L437.47 172.41L433.86 219.4L324.22 239.88L403.73 272.41L349.52 285.66L339.88 342.29L282.05 304.94L274.82 355.54L236.27 300.12L207.35 219.4L232.65 133.86L473.61 66.39Z");
+    			attr_dev(path6, "id", "irregular-drag");
+    			attr_dev(path6, "class", "dragall");
+    			attr_dev(path6, "opacity", "1");
+    			attr_dev(path6, "fill", "#b06508");
+    			add_location(path6, file, 182, 0, 5792);
+    			attr_dev(path7, "d", "M426.63 374.82L180.84 377.23L300.12 86.87L426.63 374.82Z");
+    			attr_dev(path7, "id", "triangulo-drag");
+    			attr_dev(path7, "class", "dragall");
+    			attr_dev(path7, "opacity", "1");
+    			attr_dev(path7, "fill", "#469216");
+    			add_location(path7, file, 189, 0, 6073);
+    			attr_dev(svg3, "id", "svg-contenedor");
     			attr_dev(svg3, "version", "1.1");
     			attr_dev(svg3, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg3, "xmlns:xlink", "http://www.w3.org/1999/xlink");
     			attr_dev(svg3, "preserveAspectRatio", "xMidYMid meet");
-    			attr_dev(svg3, "viewBox", "179.84337349397592 85.86746987951798 249.78313253012053 294.3614457831326");
-    			attr_dev(svg3, "width", "245.78");
-    			attr_dev(svg3, "height", "290.36");
-    			add_location(svg3, file, 171, 0, 6267);
-    			attr_dev(div, "id", "zonas_linguisticas");
-    			add_location(div, file, 117, 0, 4011);
-    			add_location(section, file, 42, 0, 1009);
+    			attr_dev(svg3, "viewBox", `0 0 ${ctx.width} ${ctx.height}`);
+    			attr_dev(svg3, "width", `${ctx.width}px`);
+    			attr_dev(svg3, "height", `${ctx.height}px`);
+    			add_location(svg3, file, 160, 0, 5094);
+    			attr_dev(div1, "id", "zonas_linguisticas");
+    			add_location(div1, file, 158, 0, 5063);
+    			add_location(section, file, 110, 0, 3271);
     		},
 
     		l: function claim(nodes) {
@@ -10218,42 +10168,23 @@ var app = (function () {
 
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
-    			append_dev(section, h2);
-    			append_dev(section, t0);
-    			append_dev(section, div);
-    			append_dev(div, svg0);
-    			append_dev(svg0, defs0);
-    			append_dev(defs0, path0);
-    			append_dev(svg0, g1);
-    			append_dev(g1, g0);
-    			append_dev(g0, use0);
-    			append_dev(div, t1);
-    			append_dev(div, svg1);
+    			append_dev(section, div0);
+    			append_dev(div0, svg2);
+    			append_dev(svg2, path0);
+    			append_dev(svg2, path1);
+    			append_dev(svg2, svg1);
     			append_dev(svg1, defs1);
-    			append_dev(defs1, path1);
-    			append_dev(svg1, g4);
-    			append_dev(g4, g3);
-    			append_dev(g3, use1);
-    			append_dev(g3, g2);
-    			append_dev(g2, use2);
-    			append_dev(div, t2);
-    			append_dev(div, svg2);
-    			append_dev(svg2, defs2);
-    			append_dev(defs2, path2);
-    			append_dev(svg2, g7);
-    			append_dev(g7, g6);
-    			append_dev(g6, use3);
-    			append_dev(g6, g5);
-    			append_dev(g5, use4);
-    			append_dev(div, t3);
-    			append_dev(div, svg3);
-    			append_dev(svg3, defs3);
-    			append_dev(defs3, path3);
-    			append_dev(svg3, g10);
-    			append_dev(g10, g9);
-    			append_dev(g9, use5);
-    			append_dev(g9, g8);
-    			append_dev(g8, use6);
+    			append_dev(defs1, path2);
+    			append_dev(defs1, svg0);
+    			append_dev(svg0, defs0);
+    			append_dev(defs0, path3);
+    			append_dev(section, t);
+    			append_dev(section, div1);
+    			append_dev(div1, svg3);
+    			append_dev(svg3, path4);
+    			append_dev(svg3, path5);
+    			append_dev(svg3, path6);
+    			append_dev(svg3, path7);
     		},
 
     		p: noop,
@@ -10270,53 +10201,69 @@ var app = (function () {
     	return block;
     }
 
+    const itemDrag = '.dragall';
+
     function instance($$self) {
     	
-      //
-      console.log("Start Scripts: ");
-      const Drag = () => {
-        interact$1('.dragall').draggable({
-          inertia: true,
-          modifiers: [
-            interact$1.modifiers.restrictRect({
-              restriction: 'body',
-              endOnly: true
-            })
-          ],
-          // autoScroll: true,
-          onmove: dragMoveListener,
-          onend: (e) => {
-            console.log('drag');
-          }
+    //
+    let width = window.innerWidth;
+    let height = window.innerHeight;
 
-        });
-      };
+    const Drag = () => {
+      interact$1(itemDrag).draggable({
+        inertia: true,
+        cursorChecker: (action, interatable, element, interacting) => {
+          switch (action.axis) {
+            case 'x': return 'ew-resize'
+            case 'y': return 'ns-resize'
+            default: return interacting ? 'grabbing' : 'grab'
+          }
+        },
+        modifiers: [
+          interact$1.modifiers.restrictRect({
+            restriction: 'body',
+            endOnly: true
+          })
+        ],
+        // autoScroll: true,
+        onmove: dragMoveListener,
+        onend: (e) => {
+          console.log('Fin');
+        }
+
+      });
+    };
+
     const dragMoveListener = (event) => {
 
-        let target = event.target;//svg
+      let target = event.target;
+      console.log("Moviendo: ");
+      // aplica los valores en los atributos data-
+      var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+      var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+      // translate the element
+      target.style.webkitTransform =
+      target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)';
 
-        // aplica los valores en los atributos data-
-        var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-        var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-        // translate the element
-        target.style.webkitTransform =
-        target.style.transform =
-        'translate(' + x + 'px, ' + y + 'px)';
-
-        // update the position attributes
-        target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
-      };
-      //
-      Drag();
+      // update the position attributes
+      target.setAttribute('data-x', x);
+      target.setAttribute('data-y', y);
+    };
+    //llamadas
+    Drag();
+    // Drop()
 
     	$$self.$capture_state = () => {
     		return {};
     	};
 
-    	$$self.$inject_state = $$props => {};
+    	$$self.$inject_state = $$props => {
+    		if ('width' in $$props) $$invalidate('width', width = $$props.width);
+    		if ('height' in $$props) $$invalidate('height', height = $$props.height);
+    	};
 
-    	return {};
+    	return { width, height };
     }
 
     class DragDrop extends SvelteComponentDev {
@@ -10329,23 +10276,14 @@ var app = (function () {
 
     /* src/App.svelte generated by Svelte v3.12.1 */
 
-    const file$1 = "src/App.svelte";
-
     function create_fragment$1(ctx) {
-    	var h1, t0, t1, t2, section, current;
+    	var current;
 
     	var dragdrop = new DragDrop({ $$inline: true });
 
     	const block = {
     		c: function create() {
-    			h1 = element("h1");
-    			t0 = text(ctx.name);
-    			t1 = text("!");
-    			t2 = space();
-    			section = element("section");
     			dragdrop.$$.fragment.c();
-    			add_location(h1, file$1, 12, 0, 181);
-    			add_location(section, file$1, 14, 0, 199);
     		},
 
     		l: function claim(nodes) {
@@ -10353,20 +10291,11 @@ var app = (function () {
     		},
 
     		m: function mount(target, anchor) {
-    			insert_dev(target, h1, anchor);
-    			append_dev(h1, t0);
-    			append_dev(h1, t1);
-    			insert_dev(target, t2, anchor);
-    			insert_dev(target, section, anchor);
-    			mount_component(dragdrop, section, null);
+    			mount_component(dragdrop, target, anchor);
     			current = true;
     		},
 
-    		p: function update(changed, ctx) {
-    			if (!current || changed.name) {
-    				set_data_dev(t0, ctx.name);
-    			}
-    		},
+    		p: noop,
 
     		i: function intro(local) {
     			if (current) return;
@@ -10381,13 +10310,7 @@ var app = (function () {
     		},
 
     		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach_dev(h1);
-    				detach_dev(t2);
-    				detach_dev(section);
-    			}
-
-    			destroy_component(dragdrop);
+    			destroy_component(dragdrop, detaching);
     		}
     	};
     	dispatch_dev("SvelteRegisterBlock", { block, id: create_fragment$1.name, type: "component", source: "", ctx });
@@ -10396,46 +10319,46 @@ var app = (function () {
 
     function instance$1($$self, $$props, $$invalidate) {
     	
-    	let { name } = $$props;
+    	let { title } = $$props;
 
-    	const writable_props = ['name'];
+    	const writable_props = ['title'];
     	Object.keys($$props).forEach(key => {
     		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$set = $$props => {
-    		if ('name' in $$props) $$invalidate('name', name = $$props.name);
+    		if ('title' in $$props) $$invalidate('title', title = $$props.title);
     	};
 
     	$$self.$capture_state = () => {
-    		return { name };
+    		return { title };
     	};
 
     	$$self.$inject_state = $$props => {
-    		if ('name' in $$props) $$invalidate('name', name = $$props.name);
+    		if ('title' in $$props) $$invalidate('title', title = $$props.title);
     	};
 
-    	return { name };
+    	return { title };
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, ["name"]);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, ["title"]);
     		dispatch_dev("SvelteRegisterComponent", { component: this, tagName: "App", options, id: create_fragment$1.name });
 
     		const { ctx } = this.$$;
     		const props = options.props || {};
-    		if (ctx.name === undefined && !('name' in props)) {
-    			console.warn("<App> was created without expected prop 'name'");
+    		if (ctx.title === undefined && !('title' in props)) {
+    			console.warn("<App> was created without expected prop 'title'");
     		}
     	}
 
-    	get name() {
+    	get title() {
     		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set name(value) {
+    	set title(value) {
     		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -10443,7 +10366,7 @@ var app = (function () {
     const app = new App({
     	target: document.body,
     	props: {
-    		name: "Draggn' "
+    		title: "Draggin' <path>"
     	}
     });
 
